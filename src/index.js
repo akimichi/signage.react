@@ -8,9 +8,9 @@ import {
   Routes
 } from "react-router-dom";
 import './index.css';
-import App from './App';
 import Home from "./Home";
 import Login from "./Login";
+import AdminIndex from "./admin/index.js";
 import ErrorPage from "./ErrorPage";
 import reportWebVitals from './reportWebVitals';
 
@@ -29,6 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path={`/`} element={<Home />} />
           <Route path={`/login/`} element={<Login />} />
+          <Route path={`/admin/`} element={<AdminIndex />} />
         </Routes>
       </BrowserRouter>
   {/*
