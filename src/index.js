@@ -7,12 +7,16 @@ import {
   Route,
   Routes
 } from "react-router-dom";
-import './index.css';
+import { Amplify, Storage } from 'aws-amplify';
+import awsconfig from './aws-exports';
 import Home from "./Home";
 import Login from "./Login";
 import AdminIndex from "./admin/index.js";
 import ErrorPage from "./ErrorPage";
 import reportWebVitals from './reportWebVitals';
+import './index.css';
+
+Amplify.configure(awsconfig);
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([

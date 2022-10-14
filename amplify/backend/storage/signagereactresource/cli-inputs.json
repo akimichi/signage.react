@@ -1,0 +1,18 @@
+{
+  "resourceName": "signagereactresource",
+  "policyUUID": "525959ae",
+  "bucketName": "signage-react-bucket",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "S3Triggera797313b",
+  "groupAccess": {}
+}
