@@ -15,7 +15,7 @@ async function fetchImages() {
 }
 async function fetchPdfs() {
   let pdfKeys = await Storage.list('')
-  console.log("pdfKeys", imageKeys)
+  console.log("pdfKeys", pdfKeys)
   pdfKeys = await Promise.all(pdfKeys.map(async k => {
     console.log("k", k)
     const key = await Storage.get(k.key)

@@ -13,6 +13,7 @@ import Home from "./Home";
 import Login from "./Login";
 import AdminIndex from "./admin/index.js";
 import AdminImages from "./admin/Images";
+import AdminPdfs from "./admin/Pdfs";
 import DisplayPage from "./Display";
 import ErrorPage from "./ErrorPage";
 import reportWebVitals from './reportWebVitals';
@@ -38,6 +39,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path={`/admin/`} element={<AdminIndex />} />
           <Route path={`/display/`} element={<DisplayPage />} />
           <Route path={`/admin/images`} element={<AdminImages />} />
+          <Route path={`/admin/pdfs`} element={<AdminPdfs />} />
         </Routes>
       </BrowserRouter>
   {/*

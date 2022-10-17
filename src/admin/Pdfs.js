@@ -1,10 +1,11 @@
 import { Amplify, Auth } from "aws-amplify";
 import React, {useEffect, useState} from "react"
 import { Storage } from 'aws-amplify'
+import { Document, Page } from 'react-pdf';
 import awsconfig from '../aws-exports';
-import fetchPdfs from '../utils';
+import {fetchPdfs} from '../utils';
 
-const AdminPdf = () => {
+const AdminPdfs = () => {
   const [pdfs, setPdfs] = useState([])
 
   async function onChange(e) {
@@ -27,18 +28,20 @@ const AdminPdf = () => {
       />
       <div style={{ display: 'flex', flexDirection: 'column' }}>
           {
-          images.map(image => (
-              <img
-                src={image}
-                key={image}
-                style={{width: 500}}
-              />
-          ))
+            pdfs.map(pdf => (
+              <Document file={pdf}>
+                <Page pageNumber={1}
+                    src={pdf}
+                    key={pdf}
+                    style={{width: 500}}
+                  />
+              </Document>
+            ))
           }
       </div>
     </>
   )
 }
 
-export default AdminPdf;
+export default AdminPdfs;
 
