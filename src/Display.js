@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react"
-import { useInterval } from '../hooks/useInterval'
+import { Storage } from 'aws-amplify'
+import { useInterval } from './hooks/useInterval'
 
 const DisplayPage = ({data}) => {
   // console.log("data", data)
@@ -32,16 +33,16 @@ const DisplayPage = ({data}) => {
   }, 1000 * 10); 
 
   return (
-    {
-      images.map(image => (
-        <img
-          src={image}
-          key={image}
-          style={{width: 500}}
-        />
-      ))
-    }
-
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      {
+         <img
+            src={images[index]}
+            key={images[index]}
+            style={{width: 500}}
+          />
+      }
+    </div>
   )
+
 }
 export default DisplayPage
