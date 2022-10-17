@@ -24,21 +24,28 @@ const fadeOut = keyframes`
   }
 `;
 
-const StyledImage = styled.img`
- background: #f3e2b3;
- margin-right: calc(50% - 50vw);
- margin-left: calc(50% - 50vw);
- animation: ${fadeIn} 5s ease-in-out;
-`
-const Fade = styled.div`
-  display: inline-block;
-  visibility: ${props => props.out ? 'hidden' : 'visible'};
-  animation: ${props => props.out ? fadeOut : fadeIn} 1s linear;
-  transition: visibility 1s linear;
-`;
+// const StyledImage = styled.img`
+//    background: #f3e2b3;
+//    margin-right: calc(50% - 50vw);
+//    margin-left: calc(50% - 50vw);
+//    animation: ${fadeIn} 5s ease-in-out;
+// `
+// const Fade = styled.img`
+//    display: inline-block;
+//    margin-right: calc(50% - 50vw);
+//    margin-left: calc(50% - 50vw);
+//    animation: ${props => props.out ? fadeOut : fadeIn} 5s ease-in-out;
+//    transition: visibility 1s linear;
+// `;
 
-const FadeIn = styled.div`
-  animation: ${fadeIn} .5s ease-in-out;
+   // animation: ${fadeIn} 5s linear;
+const FadeIn = styled.img`
+   display: inline-block;
+   height: 1920px;
+   width: 1080px;
+   margin-right: calc(50% - 50vw);
+   margin-left: calc(50% - 50vw);
+   animation: ${fadeIn} 5s ease-in-out;
 `;
 
 const DisplayPage = () => {
@@ -46,6 +53,7 @@ const DisplayPage = () => {
   const [index, setIndex] = useState(0)
   const [images, setImages] = useState([])
   const [visible, setVisible] = useState(true)
+  const dutation = 30*1000
 
   useEffect(() => {
     fetchImages().then(images => {
@@ -62,12 +70,13 @@ const DisplayPage = () => {
     } else {
       setIndex((index) =>  index + 1);
     }
-  }, 1000 * 10); 
+    setVisible(true)
+  }, dutation); 
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       {
-           <StyledImage
+           <FadeIn
               src={images[index]}
               key={images[index]}
             />
