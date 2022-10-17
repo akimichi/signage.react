@@ -15,14 +15,14 @@
       "auth": {
         "signagereact0f2c2900": {}
       },
+      "storage": {
+        "signagereactresource": {}
+      },
       "function": {
         "S3Triggera797313b": {
           "deploymentBucketName": "amplify-signagereact-dev-140230-deployment",
-          "s3Key": "amplify-builds/S3Triggera797313b-72676838474b7434614a-build.zip"
+          "s3Key": "amplify-builds/S3Triggera797313b-624634526a35474a496f-build.zip"
         }
-      },
-      "storage": {
-        "signagereactresource": {}
       }
     }
   }
