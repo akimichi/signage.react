@@ -1,27 +1,32 @@
 import React, {useEffect, useState} from "react"
 import { Storage } from 'aws-amplify'
 import { useInterval } from './hooks/useInterval'
+import { fetchImages } from './utils'
 
-const DisplayPage = ({data}) => {
-  // console.log("data", data)
+const DisplayPage = () => {
 
   const [index, setIndex] = useState(0)
   const [images, setImages] = useState([])
+
+  // async function fetchImages() {
+  //   let imageKeys = await Storage.list('')
+  //   console.log("imageKeys", imageKeys)
+  //   imageKeys = await Promise.all(imageKeys.map(async k => {
+  //     console.log("k", k)
+  //     const key = await Storage.get(k.key)
+  //     return key
+  //   }))
+  //   console.log('imageKeys: ', imageKeys)
+  //   // setImages(imageKeys)
+  //   return imageKeys
+  // }
   useEffect(() => {
-    fetchImages()
+    fetchImages().then(images => {
+      console.log("images: ", images)
+      setImages(images)
+    })
   }, [])
 
-  async function fetchImages() {
-    let imageKeys = await Storage.list('')
-    console.log("imageKeys", imageKeys)
-    imageKeys = await Promise.all(imageKeys.map(async k => {
-      console.log("k", k)
-      const key = await Storage.get(k.key)
-      return key
-    }))
-    console.log('imageKeys: ', imageKeys)
-    setImages(imageKeys)
-  }
 
   useInterval(() => {
     // Your custom logic here
