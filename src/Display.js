@@ -8,18 +8,6 @@ const DisplayPage = () => {
   const [index, setIndex] = useState(0)
   const [images, setImages] = useState([])
 
-  // async function fetchImages() {
-  //   let imageKeys = await Storage.list('')
-  //   console.log("imageKeys", imageKeys)
-  //   imageKeys = await Promise.all(imageKeys.map(async k => {
-  //     console.log("k", k)
-  //     const key = await Storage.get(k.key)
-  //     return key
-  //   }))
-  //   console.log('imageKeys: ', imageKeys)
-  //   // setImages(imageKeys)
-  //   return imageKeys
-  // }
   useEffect(() => {
     fetchImages().then(images => {
       console.log("images: ", images)

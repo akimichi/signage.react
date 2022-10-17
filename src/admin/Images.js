@@ -2,6 +2,7 @@ import { Amplify, Auth } from "aws-amplify";
 import React, {useEffect, useState} from "react"
 import { Storage } from 'aws-amplify'
 import awsconfig from '../aws-exports';
+import { fetchImages } from '../utils'
 
 Amplify.configure(awsconfig);
 Auth.configure(awsconfig);
@@ -9,21 +10,14 @@ Auth.configure(awsconfig);
 
 const AdminImages = () => {
   const [images, setImages] = useState([])
+
   useEffect(() => {
-    fetchImages()
+    fetchImages().then(images => {
+      console.log("images: ", images)
+      setImages(images)
+    })
   }, [])
 
-  async function fetchImages() {
-    let imageKeys = await Storage.list('')
-    console.log("imageKeys", imageKeys)
-    imageKeys = await Promise.all(imageKeys.map(async k => {
-      console.log("k", k)
-      const key = await Storage.get(k.key)
-      return key
-    }))
-    console.log('imageKeys: ', imageKeys)
-    setImages(imageKeys)
-  }
 
   async function onChange(e) {
     const file = e.target.files[0];
@@ -31,7 +25,10 @@ const AdminImages = () => {
       contentType: 'image/png'
     })
     console.log({ result })
-    fetchImages()
+    fetchImages().then(images => {
+      console.log("images: ", images)
+      setImages(images)
+    })
   }
 
   return (
@@ -46,7 +43,7 @@ const AdminImages = () => {
               <img
                 src={image}
                 key={image}
-                style={{width: 500, height: 300}}
+                style={{width: 500}}
               />
           ))
           }
