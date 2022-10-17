@@ -2,6 +2,11 @@ import React, {useEffect, useState} from "react"
 import { Storage } from 'aws-amplify'
 import { useInterval } from './hooks/useInterval'
 import { fetchImages } from './utils'
+import styled from 'styled-components'
+
+const StyledImage = styled.img`
+  width: "500"
+`
 
 const DisplayPage = () => {
 
@@ -28,7 +33,7 @@ const DisplayPage = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       {
-         <img
+         <StyledImage
             src={images[index]}
             key={images[index]}
             style={{width: 500}}
