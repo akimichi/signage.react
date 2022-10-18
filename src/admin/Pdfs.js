@@ -8,6 +8,17 @@ import {fetchPdfs} from '../utils';
 const AdminPdfs = () => {
   const [pdfs, setPdfs] = useState([])
 
+  useEffect(() => {
+    
+    const getPdfs = async () => {
+      const pdfs = fetchPdfs().then(pdfs => {
+        console.log("pdfs: ", pdfs)
+        return pdfs
+      })
+      return pdfs
+    }
+    setPdfs(getPdfs())
+  }, [])
   async function onChange(e) {
     const file = e.target.files[0];
     const result = await Storage.put(file.name, file, {
