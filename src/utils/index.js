@@ -22,11 +22,11 @@ async function fetchPdfs() {
     return ( extention === "pdf")
   })
   console.log('pdfOnlyKeys: ', pdfOnlyKeys)
-  return pdfOnlyKeys.map( async k => {
+  return await Promise.all(pdfOnlyKeys.map( async k => {
     const key = await Storage.get(k.key)
     console.log('key: ', key)
     return key
-  })
+  }))
 }
 
 
