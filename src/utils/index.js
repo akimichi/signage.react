@@ -29,7 +29,7 @@ async function fetchPdfs() {
   return await Promise.all(pdfOnlyKeys.map( async k => {
     const key = await Storage.get(k.key)
     console.log('key: ', key)
-    return key
+    return {url: key, filename: k.key}
   }))
 }
 

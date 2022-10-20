@@ -12,6 +12,7 @@ import awsconfig from './aws-exports';
 import Home from "./Home";
 import Login from "./Login";
 import PreviewImages from "./preview/Images";
+import PreviewPdfs from "./preview/Pdfs";
 import AdminIndex from "./admin/index.js";
 import AdminImages from "./admin/Images";
 import AdminPdfs from "./admin/Pdfs";
@@ -39,6 +40,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path={`/login/`} element={<Login />} />
           <Route path={`/display/`} element={<DisplayPage />} />
           <Route path={`/preview/images`} element={<PreviewImages />} />
+          <Route path={`/preview/pdfs`} element={<PreviewPdfs />} />
           <Route path={`/admin/`} element={<AdminIndex />} />
           <Route path={`/admin/images`} element={<AdminImages />} />
           <Route path={`/admin/pdfs`} element={<AdminPdfs />} />
