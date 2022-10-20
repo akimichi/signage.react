@@ -24,21 +24,6 @@ const fadeOut = keyframes`
   }
 `;
 
-// const StyledImage = styled.img`
-//    background: #f3e2b3;
-//    margin-right: calc(50% - 50vw);
-//    margin-left: calc(50% - 50vw);
-//    animation: ${fadeIn} 5s ease-in-out;
-// `
-// const Fade = styled.img`
-//    display: inline-block;
-//    margin-right: calc(50% - 50vw);
-//    margin-left: calc(50% - 50vw);
-//    animation: ${props => props.out ? fadeOut : fadeIn} 5s ease-in-out;
-//    transition: visibility 1s linear;
-// `;
-
-   // animation: ${fadeIn} 5s linear;
 const FadeIn = styled.img`
    display: inline-block;
    height: 1920px;
