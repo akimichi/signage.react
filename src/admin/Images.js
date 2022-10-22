@@ -12,10 +12,16 @@ const AdminImages = () => {
   const [images, setImages] = useState([])
 
   useEffect(() => {
-    fetchImages().then(images => {
-      console.log("images: ", images)
-      setImages(images)
+    const gotImages = fetchImages()
+    console.log("gotImages", gotImages)
+    gotImages.then(items => {
+      console.log("items", items)
+      setImages(items)
     })
+    // fetchImages().then(images => {
+    //   console.log("images: ", images)
+    //   setImages(images)
+    // })
   }, [])
 
 
@@ -41,8 +47,8 @@ const AdminImages = () => {
           {
           images.map(image => (
               <img
-                src={image}
-                key={image}
+                src={image.url}
+                key={image.filename}
                 style={{width: 500}}
               />
           ))

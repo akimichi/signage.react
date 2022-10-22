@@ -1,6 +1,10 @@
+import { Amplify, Auth } from "aws-amplify";
 import React from "react"
 import { Storage } from 'aws-amplify'
+import awsconfig from '../aws-exports';
 
+Amplify.configure(awsconfig);
+Auth.configure(awsconfig);
 
 async function fetchImages() {
   let imageKeys = await Storage.list('')
