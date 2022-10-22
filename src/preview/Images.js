@@ -39,7 +39,7 @@ const PreviewImages = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
         <FadeIn
-          src={images[index].url}
+          src={images[index]?.url}
         />
     </div>
   )
