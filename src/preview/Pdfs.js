@@ -1,21 +1,26 @@
 import React, {useEffect, useState} from "react"
 import { Amplify, API, Auth, Storage, graphqlOperation } from "aws-amplify";
 import { useInterval } from '../hooks/useInterval'
-import { fetchPdfs } from '../utils'
 import FadeIn from '../components/FadeIn'
 import { ErrorBoundary } from 'react-error-boundary'
 import ErrorFallback from '../components/ErrorFallback'
+import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
+import { fetchPdfs } from '../utils'
 
-const PreviewPdfs = ({data}) => {
 
+const PreviewPdfs = () => {
   const [index, setIndex] = useState(0)
   const [pdfs, setPdfs] = useState([])
+  const [numPages, setNumPages] = useState(1);
   const [visible, setVisible] = useState(true)
   const dutation = 30*1000
 
   useEffect(() => {
-    fetchPdfs().then(pdfs => {
-      setPdfs(pdfs)
+    const gotPdfs = fetchPdfs()
+    console.log("gotPdfs", gotPdfs)
+    gotPdfs.then(items => {
+      console.log("items", items)
+      setPdfs(items)
     })
   }, [])
 
@@ -29,16 +34,16 @@ const PreviewPdfs = ({data}) => {
     setVisible(true)
   }, dutation); 
 
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
         { console.log("pdfs", pdfs)}
-        <h2> {pdfs[index].filename} </h2>
-        <FadeIn
-          src={pdfs[index].url}
-          key={pdfs[index].filename}
-        />
-      </ErrorBoundary>
+        <Document file={pdfs[index]} onLoadSuccess={onDocumentLoadSuccess}>
+          <Page pageNumber={1} />
+        </Document>
     </div>
   )
 }

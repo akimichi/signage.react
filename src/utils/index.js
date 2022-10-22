@@ -10,6 +10,7 @@ async function fetchImages() {
   let imageKeys = await Storage.list('')
   const imageOnlyKeys = imageKeys.filter(k => {
     const extention = k.key.split('.').pop() 
+    console.log("extention", extention)
     return ( extention !== "pdf")
   })
   console.log("imageKeys", imageKeys)
