@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react"
-import { Storage } from 'aws-amplify'
 import { useInterval } from './hooks/useInterval'
 import { fetchImages } from './utils'
 import styled, { keyframes } from 'styled-components';
@@ -14,15 +13,15 @@ const fadeIn = keyframes`
   }
 `;
 
-const fadeOut = keyframes`
-  from {
-    opacity: 1;
-  }
+// const fadeOut = keyframes`
+//   from {
+//     opacity: 1;
+//   }
 
-  to {
-    opacity: 0;
-  }
-`;
+//   to {
+//     opacity: 0;
+//   }
+// `;
 
 const FadeIn = styled.img`
    display: inline-block;
@@ -41,10 +40,15 @@ const DisplayPage = () => {
   const dutation = 30*1000
 
   useEffect(() => {
-    fetchImages().then(images => {
-      console.log("images: ", images)
-      setImages(images)
+    const gotImages = fetchImages()
+    gotImages.then(items => {
+      console.log("items", items)
+      setImages(items)
     })
+    // fetchImages().then(images => {
+    //   console.log("images: ", images)
+    //   setImages(images)
+    // })
   }, [])
 
 
@@ -62,8 +66,8 @@ const DisplayPage = () => {
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       {
            <FadeIn
-              src={images[index]}
-              key={images[index]}
+              src={images[index]?.url}
+              key={images[index]?.filename}
             />
       }
     </div>

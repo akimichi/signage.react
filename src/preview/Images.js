@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react"
-import { Amplify, API, Auth, Storage, graphqlOperation } from "aws-amplify";
+import { Amplify, Auth } from "aws-amplify";
 import awsconfig from '../aws-exports';
 // import Layout from '../../components/layout'
 import { useInterval } from '../hooks/useInterval'
 import { fetchImages } from '../utils'
 import FadeIn from '../components/FadeIn'
-import { ErrorBoundary } from 'react-error-boundary'
-import ErrorFallback from '../components/ErrorFallback'
+// import { ErrorBoundary } from 'react-error-boundary'
+// import ErrorFallback from '../components/ErrorFallback'
 
 Amplify.configure(awsconfig);
 Auth.configure(awsconfig);
@@ -38,6 +38,7 @@ const PreviewImages = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <h2> {images[index]?.filename} </h2>
         <FadeIn
           src={images[index]?.url}
         />
