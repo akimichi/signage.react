@@ -23,6 +23,9 @@
           "deploymentBucketName": "amplify-signagereact-dev-140230-deployment",
           "s3Key": "amplify-builds/S3Triggera797313b-624634526a35474a496f-build.zip"
         }
+      },
+      "api": {
+        "signagereact": {}
       }
     }
   }
