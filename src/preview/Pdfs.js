@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react"
-import { Amplify, API, Auth, Storage, graphqlOperation } from "aws-amplify";
+// import { Amplify, API, Auth, Storage, graphqlOperation } from "aws-amplify";
 import { useInterval } from '../hooks/useInterval'
 import { fadeIn } from '../components/FadeIn'
-import { ErrorBoundary } from 'react-error-boundary'
 import styled, { keyframes } from 'styled-components';
-import ErrorFallback from '../components/ErrorFallback'
+// import { ErrorBoundary } from 'react-error-boundary'
+// import ErrorFallback from '../components/ErrorFallback'
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import { fetchPdfs } from '../utils'
 
