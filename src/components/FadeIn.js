@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
 
-const fadeIn = keyframes`
+export const fadeIn = keyframes`
   from {
     opacity: 0;
   }
@@ -22,3 +22,4 @@ const FadeIn = styled.img`
 `;
 
 export default FadeIn
+

@@ -1,12 +1,21 @@
 import React, {useEffect, useState} from "react"
 import { Amplify, API, Auth, Storage, graphqlOperation } from "aws-amplify";
 import { useInterval } from '../hooks/useInterval'
-import FadeIn from '../components/FadeIn'
+import { fadeIn } from '../components/FadeIn'
 import { ErrorBoundary } from 'react-error-boundary'
+import styled, { keyframes } from 'styled-components';
 import ErrorFallback from '../components/ErrorFallback'
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import { fetchPdfs } from '../utils'
 
+const StyledDocument = styled(Document)`
+   display: inline-block;
+   height: 1920px;
+   width: 1080px;
+   margin-right: calc(50% - 50vw);
+   margin-left: calc(50% - 50vw);
+   animation: ${fadeIn} 5s ease-in-out;
+`;
 
 const PreviewPdfs = () => {
   const [index, setIndex] = useState(0)
@@ -38,12 +47,13 @@ const PreviewPdfs = () => {
     setNumPages(numPages);
   }
 
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
         { console.log("pdfs", pdfs)}
-        <Document file={pdfs[index]} onLoadSuccess={onDocumentLoadSuccess}>
+        <StyledDocument file={pdfs[index]} onLoadSuccess={onDocumentLoadSuccess}>
           <Page pageNumber={1} />
-        </Document>
+        </StyledDocument>
     </div>
   )
 }
