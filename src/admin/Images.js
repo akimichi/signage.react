@@ -2,6 +2,7 @@ import { Amplify, Auth } from "aws-amplify";
 import React, {useEffect, useState} from "react"
 import { Storage } from 'aws-amplify'
 import awsconfig from '../aws-exports';
+import { createSlide } from '../graphql/mutations'
 import { fetchImages } from '../utils'
 
 Amplify.configure(awsconfig);
@@ -11,28 +12,24 @@ Auth.configure(awsconfig);
 const AdminImages = () => {
   const [images, setImages] = useState([])
 
+
   useEffect(() => {
-    const gotImages = fetchImages()
-    console.log("gotImages", gotImages)
-    gotImages.then(items => {
-      console.log("items", items)
-      setImages(items)
-    })
-    // fetchImages().then(images => {
-    //   console.log("images: ", images)
-    //   setImages(images)
-    // })
+     fetchImages().then(items => {
+       console.log("items", items)
+       setImages(items)
+     })
   }, [])
 
 
   async function onChange(e) {
     const file = e.target.files[0];
-    const result = await Storage.put(file.name, file, {
+    const { filename } = await Storage.put(file.name, file, {
       contentType: 'image/png'
     })
-    console.log({ result })
+    const url = await Storage.get(filename)
+    createSlide({input: {filename, url}})
     fetchImages().then(images => {
-      console.log("images: ", images)
+      console.log("images@fetchImages: ", images)
       setImages(images)
     })
   }
@@ -45,13 +42,13 @@ const AdminImages = () => {
       />
       <div style={{ display: 'flex', flexDirection: 'column' }}>
           {
-          images.map(image => (
-              <img
-                src={image.url}
-                key={image.filename}
-                style={{width: 500}}
-              />
-          ))
+            images && images.map(image => (
+                <img
+                  src={image.url}
+                  key={image.filename}
+                  style={{width: 500}}
+                />
+            ))
           }
       </div>
     </>
