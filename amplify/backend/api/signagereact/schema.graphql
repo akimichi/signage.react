@@ -6,21 +6,22 @@ type Playlist @model {
   id: ID!
   name: String!
   slides: [Slide] @manyToMany(relationName: "PlaylistSlide")
-  memo: String
+  description: String
 }
 
 type Slide @model {
   id: ID!
   url: String!
   filename: String!
+  extention: String
   category: Category!
   playlists: [Playlist] @manyToMany(relationName: "PlaylistSlide")
-  memo: String
+  description: String
 }
 
 enum Category {
-  Image
+  IMAGE
   PDF
-  Web
+  WEB
 }
 

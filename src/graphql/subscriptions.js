@@ -16,7 +16,7 @@ export const onCreatePlaylist = /* GraphQL */ `
         }
         nextToken
       }
-      memo
+      description
       createdAt
       updatedAt
     }
@@ -37,7 +37,7 @@ export const onUpdatePlaylist = /* GraphQL */ `
         }
         nextToken
       }
-      memo
+      description
       createdAt
       updatedAt
     }
@@ -58,7 +58,7 @@ export const onDeletePlaylist = /* GraphQL */ `
         }
         nextToken
       }
-      memo
+      description
       createdAt
       updatedAt
     }
@@ -70,6 +70,7 @@ export const onCreateSlide = /* GraphQL */ `
       id
       url
       filename
+      extention
       category
       playlists {
         items {
@@ -81,7 +82,7 @@ export const onCreateSlide = /* GraphQL */ `
         }
         nextToken
       }
-      memo
+      description
       createdAt
       updatedAt
     }
@@ -93,6 +94,7 @@ export const onUpdateSlide = /* GraphQL */ `
       id
       url
       filename
+      extention
       category
       playlists {
         items {
@@ -104,7 +106,7 @@ export const onUpdateSlide = /* GraphQL */ `
         }
         nextToken
       }
-      memo
+      description
       createdAt
       updatedAt
     }
@@ -116,6 +118,7 @@ export const onDeleteSlide = /* GraphQL */ `
       id
       url
       filename
+      extention
       category
       playlists {
         items {
@@ -127,7 +130,7 @@ export const onDeleteSlide = /* GraphQL */ `
         }
         nextToken
       }
-      memo
+      description
       createdAt
       updatedAt
     }
@@ -147,7 +150,7 @@ export const onCreatePlaylistSlide = /* GraphQL */ `
         slides {
           nextToken
         }
-        memo
+        description
         createdAt
         updatedAt
       }
@@ -155,11 +158,12 @@ export const onCreatePlaylistSlide = /* GraphQL */ `
         id
         url
         filename
+        extention
         category
         playlists {
           nextToken
         }
-        memo
+        description
         createdAt
         updatedAt
       }
@@ -182,7 +186,7 @@ export const onUpdatePlaylistSlide = /* GraphQL */ `
         slides {
           nextToken
         }
-        memo
+        description
         createdAt
         updatedAt
       }
@@ -190,11 +194,12 @@ export const onUpdatePlaylistSlide = /* GraphQL */ `
         id
         url
         filename
+        extention
         category
         playlists {
           nextToken
         }
-        memo
+        description
         createdAt
         updatedAt
       }
@@ -217,7 +222,7 @@ export const onDeletePlaylistSlide = /* GraphQL */ `
         slides {
           nextToken
         }
-        memo
+        description
         createdAt
         updatedAt
       }
@@ -225,11 +230,12 @@ export const onDeletePlaylistSlide = /* GraphQL */ `
         id
         url
         filename
+        extention
         category
         playlists {
           nextToken
         }
-        memo
+        description
         createdAt
         updatedAt
       }
