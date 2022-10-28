@@ -1,4 +1,6 @@
 import styled, { keyframes } from 'styled-components';
+import { Image } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 
 
 export const fadeIn = keyframes`
@@ -12,7 +14,8 @@ export const fadeIn = keyframes`
 `;
 
 
-const FadeIn = styled.img`
+// const FadeIn = styled.img`
+const FadeIn = styled(Image)`
    display: inline-block;
    height: 1920px;
    width: 1080px;
