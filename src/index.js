@@ -8,6 +8,7 @@ import {
   Routes
 } from "react-router-dom";
 import { Amplify, Storage } from 'aws-amplify';
+import { ErrorBoundary } from 'react-error-boundary'
 import awsconfig from './aws-exports';
 import Home from "./Home";
 import Login from "./Login";
@@ -18,6 +19,7 @@ import AdminImages from "./admin/Images";
 import AdminPdfs from "./admin/Pdfs";
 import DisplayPage from "./Display";
 import ErrorPage from "./ErrorPage";
+import { ErrorFallback } from './utils'
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
@@ -34,7 +36,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <BrowserRouter>
         <Routes>
           <Route path={`/`} element={<Home />} />
           <Route path={`/login/`} element={<Login />} />
@@ -46,16 +49,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path={`/admin/pdfs`} element={<AdminPdfs />} />
         </Routes>
       </BrowserRouter>
-  {/*
-    <RouterProvider router={router} />
-    */}
+    </ErrorBoundary>
   </React.StrictMode>
 );
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

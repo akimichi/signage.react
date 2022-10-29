@@ -3,8 +3,6 @@ import React, {useEffect, useState} from "react"
 import { useInterval } from '../hooks/useInterval'
 import { fadeIn } from '../components/FadeIn'
 import styled, { keyframes } from 'styled-components';
-// import { ErrorBoundary } from 'react-error-boundary'
-// import ErrorFallback from '../components/ErrorFallback'
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import { fetchPdfs } from '../utils'
 

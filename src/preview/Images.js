@@ -9,8 +9,6 @@ import { useInterval } from '../hooks/useInterval'
 import { fetchImages } from '../utils'
 import FadeIn from '../components/FadeIn'
 import { fadeIn } from '../components/FadeIn'
-// import { ErrorBoundary } from 'react-error-boundary'
-// import ErrorFallback from '../components/ErrorFallback'
 
 Amplify.configure(awsconfig);
 Auth.configure(awsconfig);
