@@ -1,4 +1,4 @@
-import { Amplify, Auth } from "aws-amplify";
+import { Amplify, Auth, Hub } from "aws-amplify";
 import React, {useEffect, useState} from "react"
 import { Storage } from 'aws-amplify'
 import { Heading, Image, Divider } from '@aws-amplify/ui-react';
@@ -16,17 +16,34 @@ Auth.configure(awsconfig);
 const AdminImages = () => {
   const [images, setImages] = useState([])
 
-
   useEffect(() => {
-     fetchImages().then(items => {
-       console.log("items", items)
-       setImages(items)
-     })
+    Hub.listen("storage", (data) => console.log(data))
+    fetchImages().then(items => {
+      console.log("items", items)
+      setImages(items)
+    })
   }, [])
 
 
   return (
-    <AmplifyS3ImagePicker />
+    <>
+      <AmplifyS3ImagePicker trace />
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+          {
+            images && images.map(image => (
+              <>
+                <Heading> {image.filename} </Heading>
+                <Image
+                  src={image.url}
+                  key={image.filename}
+                  style={{width: 500}}
+                />
+                <Divider orientation="horizontal" />
+              </>
+            ))
+          }
+      </div>
+    </>
   )
 
 }

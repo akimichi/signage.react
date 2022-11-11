@@ -37,6 +37,7 @@ async function fetchPdfs() {
 }
 
 function ErrorFallback({ error }) {
+  console.error("error", error)
   return (
     <div>
       <h2>エラーが発生しました。</h2>

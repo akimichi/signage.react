@@ -5,6 +5,7 @@ import { Storage } from 'aws-amplify'
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import awsconfig from '../aws-exports';
 import {fetchPdfs} from '../utils';
+import { createSlide } from '../graphql/mutations'
 
 
 const AdminPdfs = () => {
@@ -25,6 +26,7 @@ const AdminPdfs = () => {
       contentType: 'application/pdf'
     })
     console.log({ result })
+   // createSlide({input: {filename, url}})
     fetchPdfs().then(pdfs => {
       console.log("pdfs: ", pdfs)
       setPdfs(pdfs)
