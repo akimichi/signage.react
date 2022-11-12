@@ -13,10 +13,16 @@ type Slide @model {
   id: ID!
   url: String!
   filename: String!
-  extention: String
+  mimetype: String
   category: Category!
   playlists: [Playlist] @manyToMany(relationName: "PlaylistSlide")
   description: String
+}
+
+type S3Object @model {
+  region: String!
+  bucket: String!
+  key: String!
 }
 
 enum Category {

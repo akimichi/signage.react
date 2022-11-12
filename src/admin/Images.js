@@ -18,20 +18,32 @@ const AdminImages = () => {
 
   useEffect(() => {
     Hub.listen("storage", (data) => console.log(data))
+    return () => {
+      Hub.remove("storage", () => {})
+    }
+  }, [])
+  useEffect(() => {
     fetchImages().then(items => {
-      console.log("items", items)
+      // console.log("items", items)
       setImages(items)
     })
   }, [])
 
 
+  const handleUpload = (data) => {
+    
+    return data.name
+  }
   return (
     <>
-      <AmplifyS3ImagePicker trace />
+      <AmplifyS3ImagePicker 
+        fileToKey={handleUpload}
+        track 
+      />
       <div style={{ display: 'flex', flexDirection: 'column' }}>
           {
             images && images.map(image => (
-              <>
+              <div key={image.url}>
                 <Heading> {image.filename} </Heading>
                 <Image
                   src={image.url}
@@ -39,7 +51,7 @@ const AdminImages = () => {
                   style={{width: 500}}
                 />
                 <Divider orientation="horizontal" />
-              </>
+              </div>
             ))
           }
       </div>
