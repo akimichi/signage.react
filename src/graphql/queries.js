@@ -49,7 +49,7 @@ export const getSlide = /* GraphQL */ `
       id
       url
       filename
-      extention
+      mimetype
       category
       playlists {
         items {
@@ -78,12 +78,43 @@ export const listSlides = /* GraphQL */ `
         id
         url
         filename
-        extention
+        mimetype
         category
         playlists {
           nextToken
         }
         description
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getS3Object = /* GraphQL */ `
+  query GetS3Object($id: ID!) {
+    getS3Object(id: $id) {
+      region
+      bucket
+      key
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listS3Objects = /* GraphQL */ `
+  query ListS3Objects(
+    $filter: ModelS3ObjectFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listS3Objects(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        region
+        bucket
+        key
+        id
         createdAt
         updatedAt
       }
@@ -111,7 +142,7 @@ export const getPlaylistSlide = /* GraphQL */ `
         id
         url
         filename
-        extention
+        mimetype
         category
         playlists {
           nextToken
@@ -147,7 +178,7 @@ export const listPlaylistSlides = /* GraphQL */ `
           id
           url
           filename
-          extention
+          mimetype
           category
           description
           createdAt

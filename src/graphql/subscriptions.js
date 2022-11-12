@@ -70,7 +70,7 @@ export const onCreateSlide = /* GraphQL */ `
       id
       url
       filename
-      extention
+      mimetype
       category
       playlists {
         items {
@@ -94,7 +94,7 @@ export const onUpdateSlide = /* GraphQL */ `
       id
       url
       filename
-      extention
+      mimetype
       category
       playlists {
         items {
@@ -118,7 +118,7 @@ export const onDeleteSlide = /* GraphQL */ `
       id
       url
       filename
-      extention
+      mimetype
       category
       playlists {
         items {
@@ -131,6 +131,42 @@ export const onDeleteSlide = /* GraphQL */ `
         nextToken
       }
       description
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateS3Object = /* GraphQL */ `
+  subscription OnCreateS3Object($filter: ModelSubscriptionS3ObjectFilterInput) {
+    onCreateS3Object(filter: $filter) {
+      region
+      bucket
+      key
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateS3Object = /* GraphQL */ `
+  subscription OnUpdateS3Object($filter: ModelSubscriptionS3ObjectFilterInput) {
+    onUpdateS3Object(filter: $filter) {
+      region
+      bucket
+      key
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteS3Object = /* GraphQL */ `
+  subscription OnDeleteS3Object($filter: ModelSubscriptionS3ObjectFilterInput) {
+    onDeleteS3Object(filter: $filter) {
+      region
+      bucket
+      key
+      id
       createdAt
       updatedAt
     }
@@ -158,7 +194,7 @@ export const onCreatePlaylistSlide = /* GraphQL */ `
         id
         url
         filename
-        extention
+        mimetype
         category
         playlists {
           nextToken
@@ -194,7 +230,7 @@ export const onUpdatePlaylistSlide = /* GraphQL */ `
         id
         url
         filename
-        extention
+        mimetype
         category
         playlists {
           nextToken
@@ -230,7 +266,7 @@ export const onDeletePlaylistSlide = /* GraphQL */ `
         id
         url
         filename
-        extention
+        mimetype
         category
         playlists {
           nextToken

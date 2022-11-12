@@ -82,7 +82,7 @@ export const createSlide = /* GraphQL */ `
       id
       url
       filename
-      extention
+      mimetype
       category
       playlists {
         items {
@@ -109,7 +109,7 @@ export const updateSlide = /* GraphQL */ `
       id
       url
       filename
-      extention
+      mimetype
       category
       playlists {
         items {
@@ -136,7 +136,7 @@ export const deleteSlide = /* GraphQL */ `
       id
       url
       filename
-      extention
+      mimetype
       category
       playlists {
         items {
@@ -149,6 +149,51 @@ export const deleteSlide = /* GraphQL */ `
         nextToken
       }
       description
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createS3Object = /* GraphQL */ `
+  mutation CreateS3Object(
+    $input: CreateS3ObjectInput!
+    $condition: ModelS3ObjectConditionInput
+  ) {
+    createS3Object(input: $input, condition: $condition) {
+      region
+      bucket
+      key
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateS3Object = /* GraphQL */ `
+  mutation UpdateS3Object(
+    $input: UpdateS3ObjectInput!
+    $condition: ModelS3ObjectConditionInput
+  ) {
+    updateS3Object(input: $input, condition: $condition) {
+      region
+      bucket
+      key
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteS3Object = /* GraphQL */ `
+  mutation DeleteS3Object(
+    $input: DeleteS3ObjectInput!
+    $condition: ModelS3ObjectConditionInput
+  ) {
+    deleteS3Object(input: $input, condition: $condition) {
+      region
+      bucket
+      key
+      id
       createdAt
       updatedAt
     }
@@ -177,7 +222,7 @@ export const createPlaylistSlide = /* GraphQL */ `
         id
         url
         filename
-        extention
+        mimetype
         category
         playlists {
           nextToken
@@ -214,7 +259,7 @@ export const updatePlaylistSlide = /* GraphQL */ `
         id
         url
         filename
-        extention
+        mimetype
         category
         playlists {
           nextToken
@@ -251,7 +296,7 @@ export const deletePlaylistSlide = /* GraphQL */ `
         id
         url
         filename
-        extention
+        mimetype
         category
         playlists {
           nextToken

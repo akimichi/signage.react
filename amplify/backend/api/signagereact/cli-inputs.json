@@ -6,8 +6,10 @@
     "defaultAuthType": {
       "mode": "API_KEY",
       "expirationTime": 365,
-      "apiKeyExpirationDate": "2023-10-25T07:49:38.991Z",
+      "apiKeyExpirationDate": "2023-11-12T05:57:06.815Z",
       "keyDescription": "API key for signage-react"
-    }
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
   }
 }
