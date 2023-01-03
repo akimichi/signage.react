@@ -37,7 +37,7 @@ const DisplayPage = () => {
   const [index, setIndex] = useState(0)
   const [images, setImages] = useState([])
   const [visible, setVisible] = useState(true)
-  const dutation = 30*1000
+  const dutation = 2*60*1000
 
   useEffect(() => {
     const gotImages = fetchImages()
@@ -45,10 +45,6 @@ const DisplayPage = () => {
       console.log("items", items)
       setImages(items)
     })
-    // fetchImages().then(images => {
-    //   console.log("images: ", images)
-    //   setImages(images)
-    // })
   }, [])
 
 
