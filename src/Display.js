@@ -25,12 +25,19 @@ const fadeIn = keyframes`
 
 const FadeIn = styled.img`
    display: inline-block;
-   height: 1920px;
-   width: 1080px;
+   height: 100%;
    margin-right: calc(50% - 50vw);
    margin-left: calc(50% - 50vw);
    animation: ${fadeIn} 5s ease-in-out;
 `;
+// const FadeIn = styled.img`
+//    display: inline-block;
+//    height: 1920px;
+//    width: 1080px;
+//    margin-right: calc(50% - 50vw);
+//    margin-left: calc(50% - 50vw);
+//    animation: ${fadeIn} 5s ease-in-out;
+// `;
 
 const DisplayPage = () => {
 
