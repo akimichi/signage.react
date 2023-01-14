@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react"
 // import { Amplify, API, Auth, Storage, graphqlOperation } from "aws-amplify";
-import { useInterval } from '../hooks/useInterval'
-import { fadeIn } from '../components/FadeIn'
+import { useInterval } from '../../hooks/useInterval'
+import { fadeIn } from '../../components/FadeIn'
 import styled, { keyframes } from 'styled-components';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
-import { fetchPdfs } from '../utils'
+import { fetchPdfs } from '../../utils'
 
 const StyledDocument = styled(Document)`
    display: inline-block;

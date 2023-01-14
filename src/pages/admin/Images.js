@@ -5,9 +5,9 @@ import { Heading, Image, Divider } from '@aws-amplify/ui-react';
 // import {AmplifyS3Album} from "@aws-amplify/ui-react/legacy";
 import { AmplifyS3ImagePicker } from '@aws-amplify/ui-react/legacy';
 import '@aws-amplify/ui-react/styles.css';
-import awsconfig from '../aws-exports';
-import { createSlide } from '../graphql/mutations'
-import { fetchImages } from '../utils'
+import awsconfig from '../../aws-exports';
+import { createSlide } from '../../graphql/mutations'
+import { fetchImages } from '../../utils'
 
 Amplify.configure(awsconfig);
 Auth.configure(awsconfig);

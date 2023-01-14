@@ -12,11 +12,11 @@ import { ErrorBoundary } from 'react-error-boundary'
 import awsconfig from './aws-exports';
 import Home from "./Home";
 import Login from "./Login";
-import PreviewImages from "./preview/Images";
-import PreviewPdfs from "./preview/Pdfs";
-import AdminIndex from "./admin/index.js";
-import AdminImages from "./admin/Images";
-import AdminPdfs from "./admin/Pdfs";
+import PreviewImages from "./pages/preview/Images";
+import PreviewPdfs from "./pages/preview/Pdfs";
+import AdminIndex from "./pages/admin/index.js";
+import AdminImages from "./pages/admin/Images";
+import AdminPdfs from "./pages/admin/Pdfs";
 import DisplayPage from "./Display";
 import ErrorPage from "./ErrorPage";
 import { ErrorFallback } from './utils'

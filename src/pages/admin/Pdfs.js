@@ -3,9 +3,9 @@ import React, {useEffect, useState} from "react"
 import { Storage } from 'aws-amplify'
 // import { Document, Page } from 'react-pdf';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
-import awsconfig from '../aws-exports';
-import {fetchPdfs} from '../utils';
-import { createSlide } from '../graphql/mutations'
+import awsconfig from '../../aws-exports';
+import {fetchPdfs} from '../../utils';
+import { createSlide } from '../../graphql/mutations'
 
 
 const AdminPdfs = () => {
