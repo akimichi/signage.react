@@ -1,7 +1,7 @@
 import { Amplify, Auth, Hub } from "aws-amplify";
 import React, {useEffect, useState} from "react"
 import { Storage } from 'aws-amplify'
-import { Heading, Image, Divider } from '@aws-amplify/ui-react';
+import { Heading, Image, Divider, Button } from '@aws-amplify/ui-react';
 // import {AmplifyS3Album} from "@aws-amplify/ui-react/legacy";
 import { AmplifyS3ImagePicker } from '@aws-amplify/ui-react/legacy';
 import '@aws-amplify/ui-react/styles.css';
@@ -17,11 +17,28 @@ const AdminImages = () => {
   const [images, setImages] = useState([])
 
   useEffect(() => {
-    Hub.listen("storage", (data) => console.log(data))
+    Hub.listen("storage", ({ payload }) => {
+      console.log("payload@AdminImages",payload)
+      if (payload.event === "upload" && payload.message) {
+        const imageKey = payload.message.replace("Upload success for ", "")
+        if (payload.data.attrs.result === "success") {
+          console.log(`アップロードに成功しました。`)
+          setImages((prev) => {
+            return [imageKey, ...prev]
+          })
+
+        } else {
+          Storage.remove(imageKey)
+          console.log(`アップロードに失敗しました。`)
+        }
+      }
+    })
+
     return () => {
       Hub.remove("storage", () => {})
     }
   }, [])
+
   useEffect(() => {
     fetchImages().then(items => {
       // console.log("items", items)
@@ -34,17 +51,35 @@ const AdminImages = () => {
     
     return data.name
   }
+  const handleRemove = async (filename) => {
+    await Storage.remove(filename);
+    console.log("filename@handleRemove", filename)
+    setImages((prevImages) => {
+      console.log("prevImages@handleRemove", prevImages)
+      return prevImages.filter(image => image.filename !== filename)
+    })
+    return;
+  }
   return (
     <>
       <AmplifyS3ImagePicker 
         fileToKey={handleUpload}
-        track 
+        track
       />
       <div style={{ display: 'flex', flexDirection: 'column' }}>
           {
             images && images.map(image => (
               <div key={image.url}>
-                <Heading> {image.filename} </Heading>
+                <Heading> 
+                  {image.filename} 
+                  <Button
+                    loadingText=""
+                    onClick={() => handleRemove(image.filename)}
+                    ariaLabel=""
+                    >
+                    削除する
+                  </Button>
+                </Heading>
                 <Image
                   src={image.url}
                   key={image.filename}
