@@ -17,7 +17,7 @@ import PreviewPdfs from "./pages/preview/Pdfs";
 import AdminIndex from "./pages/admin/index.js";
 import AdminImages from "./pages/admin/Images";
 import AdminPdfs from "./pages/admin/Pdfs";
-import DisplayPage from "./Display";
+import DisplayPage from "./pages/Display";
 import ErrorPage from "./ErrorPage";
 import { ErrorFallback } from './utils'
 import reportWebVitals from './reportWebVitals';

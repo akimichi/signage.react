@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react"
-import { useInterval } from './hooks/useInterval'
-import { fetchImages } from './utils'
+import { useInterval } from '../hooks/useInterval'
+import { fetchImages } from '../utils'
 import styled, { keyframes } from 'styled-components';
 
 const fadeIn = keyframes`
@@ -66,7 +66,7 @@ const DisplayPage = () => {
   }, dutation); 
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div style={ { display: 'flex', flexDirection: 'column' } }>
       {
            <FadeIn
               src={images[index]?.url}
