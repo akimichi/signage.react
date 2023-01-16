@@ -14,6 +14,7 @@ Auth.configure(awsconfig);
 
 
 const AdminImages = () => {
+  const [imageUpdated, setImageUpdated] = useState(true)
   const [images, setImages] = useState([])
 
   useEffect(() => {
@@ -23,9 +24,10 @@ const AdminImages = () => {
         const imageKey = payload.message.replace("Upload success for ", "")
         if (payload.data.attrs.result === "success") {
           console.log(`アップロードに成功しました。`)
-          setImages((prev) => {
-            return [imageKey, ...prev]
-          })
+          setImageUpdated(true)
+          // setImages((prevImages) => {
+          //   return [{filename: imageKey}, ...prevImages]
+          // })
 
         } else {
           Storage.remove(imageKey)
@@ -44,18 +46,18 @@ const AdminImages = () => {
       // console.log("items", items)
       setImages(items)
     })
-  }, [])
+    setImageUpdated(false)
+  }, [imageUpdated])
 
 
   const handleUpload = (data) => {
-    
     return data.name
   }
   const handleRemove = async (filename) => {
     await Storage.remove(filename);
     console.log("filename@handleRemove", filename)
     setImages((prevImages) => {
-      console.log("prevImages@handleRemove", prevImages)
+      // console.log("prevImages@handleRemove", prevImages)
       return prevImages.filter(image => image.filename !== filename)
     })
     return;
