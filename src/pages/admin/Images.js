@@ -25,10 +25,6 @@ const AdminImages = () => {
         if (payload.data.attrs.result === "success") {
           console.log(`アップロードに成功しました。`)
           setImageUpdated(true)
-          // setImages((prevImages) => {
-          //   return [{filename: imageKey}, ...prevImages]
-          // })
-
         } else {
           Storage.remove(imageKey)
           console.log(`アップロードに失敗しました。`)
@@ -73,8 +69,9 @@ const AdminImages = () => {
             images && images.map(image => (
               <div key={image.url}>
                 <Heading> 
-                  {image.filename} 
+                  {image.filename}
                   <Button
+                    style={{margin: "0 1rem"}}
                     loadingText=""
                     onClick={() => handleRemove(image.filename)}
                     ariaLabel=""
