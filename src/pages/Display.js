@@ -43,7 +43,7 @@ const DisplayPage = () => {
 
   const [index, setIndex] = useState(0)
   const [images, setImages] = useState([])
-  const [visible, setVisible] = useState(true)
+  // const [visible, setVisible] = useState(true)
   const dutation = 2*60*1000
 
   useEffect(() => {
@@ -62,17 +62,16 @@ const DisplayPage = () => {
     } else {
       setIndex((index) =>  index + 1);
     }
-    setVisible(true)
+    // setVisible(true)
   }, dutation); 
 
   return (
     <div style={ { display: 'flex', flexDirection: 'column' } }>
-      {
-           <FadeIn
-              src={images[index]?.url}
-              key={images[index]?.filename}
-            />
-      }
+      {console.log("index@FadeIn", images[index]?.filename)}
+     <FadeIn
+        src={images[index]?.url}
+        key={images[index]?.filename}
+      />
     </div>
   )
 
