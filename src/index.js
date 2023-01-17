@@ -11,7 +11,7 @@ import { Amplify, Storage } from 'aws-amplify';
 import { ErrorBoundary } from 'react-error-boundary'
 import awsconfig from './aws-exports';
 import Home from "./Home";
-import Login from "./Login";
+import Login from "./pages/Login";
 import PreviewImages from "./pages/preview/Images";
 import PreviewPdfs from "./pages/preview/Pdfs";
 import AdminIndex from "./pages/admin/index.js";
