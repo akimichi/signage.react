@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react"
 import { useInterval } from '../hooks/useInterval'
 import { fetchImages } from '../utils'
+import { Storage, Cache } from 'aws-amplify'
 import styled, { keyframes } from 'styled-components';
 
 const fadeIn = keyframes`
@@ -49,8 +50,17 @@ const DisplayPage = () => {
   useEffect(() => {
     const gotImages = fetchImages()
     gotImages.then(items => {
-      console.log("items", items)
+      console.log("items@DisplayPage", items)
       setImages(items)
+      items.map( async (item) => {
+        const result = await Storage.get(item.filename, { download: true });
+        console.log("result@DisplayPage", result)
+
+        // data.Body is a Blob
+        // result.Body.text().then(string => { 
+        //   // handle the String data return String 
+        // });
+      })
     })
   }, [])
 
